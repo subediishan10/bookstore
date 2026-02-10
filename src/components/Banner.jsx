@@ -1,10 +1,10 @@
 import React from "react";
-
+import banner from "../../public/book1.jpg";
 function Banner() {
   return (
     <>
-      <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 flex flex-col md:flex-row">
-        <div className="w-full md:w-1/2 mt-12 md:mt-32">
+      <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 flex flex-col md:flex-row my-10">
+        <div className="md:order-1 order-2 w-full md:w-1/2 mt-12 md:mt-32">
           <div className="space-y-12">
             <h1 className="text-4xl font-bold">
               Hello, welcomes here to learn something{" "}
@@ -39,9 +39,8 @@ function Banner() {
           </div>
           <button className="btn btn-secondary mt-4">Secondary</button>
         </div>
-
-        <div className="w-full md:w-1/2 flex items-center justify-center">
-          Right
+        <div className="w-full order-1 md:w-1/2 flex items-center justify-center">
+          <img src={banner} className="md:w-92 md:h-92 " alt="" />
         </div>
       </div>
     </>
