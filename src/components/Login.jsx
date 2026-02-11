@@ -1,55 +1,85 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 function Login() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log("Form Data:", data);
+    alert("Login Successful!");
+    // Here you can also close modal programmatically if needed
+  };
+
   return (
     <div>
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
-          <form method="dialog">
-            {/* if there is a button in form, it will close the modal */}
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-              ✕
-            </button>
-          </form>
+          {/* Close button */}
+          <Link
+            to="/"
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 outline-none"
+          >
+            ✕
+          </Link>
+
           <h3 className="font-bold text-lg">Login</h3>
-          {/*email*/}
-          <div className="mt-4 space-y-2">
-            <span>Email</span>
-            {/**For daisy ui it is must cleaner code :border border-base-content/30 */}
-            <hr className="border border-base-content/10" />
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-80 px-3 py-2 outline-none rounded-md"
-            />
-          </div>
-          {/*password*/}
-          <div className="mt-4 space-y-2">
-            <span>Password</span>
-            <hr className="border border-base-content/10" />
-            <input
-              type="password"
-              placeholder="Enter your password"
-              className="w-80 px-3 py-1 outline-none rounded-md"
-            />
-          </div>
-          {/*Button*/}
-          <div className="flex justify-around mt-4">
-            <button className="bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200">
-              Login
-            </button>
-            <p>
-              Not registered?
-              <Link
-                to="/signup"
-                className="underline text-blue-500 cursor-pointer"
+
+          {/* Form */}
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {/* Email */}
+            <div className="mt-4 space-y-2">
+              <span>Email</span>
+              <hr className="border border-base-content/10" />
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-80 px-3 py-2 outline-none rounded-md"
+                {...register("email", { required: "Email is required" })}
+              />
+              {errors.email && (
+                <span className="text-red-500">{errors.email.message}</span>
+              )}
+            </div>
+
+            {/* Password */}
+            <div className="mt-4 space-y-2">
+              <span>Password</span>
+              <hr className="border border-base-content/10" />
+              <input
+                type="password"
+                placeholder="Enter your password"
+                className="w-80 px-3 py-2 outline-none rounded-md"
+                {...register("password", { required: "Password is required" })}
+              />
+              {errors.password && (
+                <span className="text-red-500">{errors.password.message}</span>
+              )}
+            </div>
+
+            {/* Button & Signup */}
+            <div className="flex justify-around items-center mt-4 gap-3">
+              <button
+                type="submit"
+                className="bg-pink-500 text-white rounded-md px-3 py-2 hover:bg-blue-700 duration-200"
               >
-                Signup
-              </Link>
-              {""}
-            </p>
-          </div>
+                Login
+              </button>
+              <p>
+                Not registered?{" "}
+                <Link
+                  to="/signup"
+                  className="underline text-blue-500 cursor-pointer"
+                >
+                  Signup
+                </Link>
+              </p>
+            </div>
+          </form>
         </div>
       </dialog>
     </div>

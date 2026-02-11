@@ -13,14 +13,14 @@ function Freebook() {
     infinite: false,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -57,10 +57,12 @@ function Freebook() {
         </div>
 
         <div>
-          <Slider {...settings}>
-            {filterData.map((item) => {
-              return <Cards item={item} key={item.id} />;
-            })}
+          <Slider {...settings} className="mt-6">
+            {filterData.map((item) => (
+              <div key={item.id} className="px-2 md:px-3 lg:px-4">
+                <Cards item={item} />
+              </div>
+            ))}
           </Slider>
         </div>
       </div>

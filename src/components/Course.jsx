@@ -23,7 +23,7 @@ function Course() {
             </button>
           </Link>
         </div>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-4 ">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
           {list.map((item) => {
             return <Cards item={item} key={item.id} />;
           })}
