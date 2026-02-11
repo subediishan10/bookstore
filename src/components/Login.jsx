@@ -41,8 +41,11 @@ function Login() {
                 className="w-80 px-3 py-2 outline-none rounded-md"
                 {...register("email", { required: "Email is required" })}
               />
+              <br />
               {errors.email && (
-                <span className="text-red-500">{errors.email.message}</span>
+                <span className="text-red-500 text-sm">
+                  {errors.email.message}
+                </span>
               )}
             </div>
 
@@ -56,8 +59,11 @@ function Login() {
                 className="w-80 px-3 py-2 outline-none rounded-md"
                 {...register("password", { required: "Password is required" })}
               />
+              <br />
               {errors.password && (
-                <span className="text-red-500">{errors.password.message}</span>
+                <span className="text-red-500 text-sm">
+                  {errors.password.message}
+                </span>
               )}
             </div>
 
@@ -65,7 +71,7 @@ function Login() {
             <div className="flex justify-around items-center mt-4 gap-3">
               <button
                 type="submit"
-                className="bg-pink-500 text-white rounded-md px-3 py-2 hover:bg-blue-700 duration-200"
+                className="bg-pink-500 text-white rounded-md px-3 py-2 hover:bg-pink-700 duration-200"
               >
                 Login
               </button>
