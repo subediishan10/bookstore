@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { X } from "lucide-react";
 
 function Login() {
   const {
@@ -12,25 +13,26 @@ function Login() {
   const onSubmit = (data) => {
     console.log("Form Data:", data);
     alert("Login Successful!");
-    // Here you can also close modal programmatically if needed
   };
 
   return (
     <div>
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
-          {/* Close button */}
-          <Link
-            to="/"
-            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 outline-none"
-          >
-            ✕
-          </Link>
-
-          <h3 className="font-bold text-lg">Login</h3>
-
-          {/* Form */}
           <form onSubmit={handleSubmit(onSubmit)}>
+            {/* Close button */}
+            <Link
+              to="/"
+              onClick={() => document.getElementById("my_modal_3").close()}
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 outline-none"
+            >
+              <X size={20} />
+            </Link>
+
+            <h3 className="font-bold text-lg">Login</h3>
+
+            {/* Form */}
+
             {/* Email */}
             <div className="mt-4 space-y-2">
               <span>Email</span>
@@ -75,7 +77,7 @@ function Login() {
               >
                 Login
               </button>
-              <p>
+              <span>
                 Not registered?{" "}
                 <Link
                   to="/signup"
@@ -83,7 +85,7 @@ function Login() {
                 >
                   Signup
                 </Link>
-              </p>
+              </span>
             </div>
           </form>
         </div>
